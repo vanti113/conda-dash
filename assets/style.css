@@ -1,4 +1,23 @@
 @import "reset.css";
 @import "font.css";
+@import "tables.css";
 
 
+html, body{
+  box-sizing: border-box;
+  background-color: #111111;
+}
+
+.header{
+  padding: 30px 0px;
+  color: white;
+  font-size: 1.8rem;
+  text-align:center;
+}
+.dash-div{
+  display: grid;
+  grid-template-columns: 65% 35%;
+}
+.table-div, .graph-div{
+  border: 0.01px solid white;
+}

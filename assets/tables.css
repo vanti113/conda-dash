@@ -1,0 +1,30 @@
+.table-div{
+  color: white;
+  display: flex;
+  justify-content: right;
+  height: 500px;
+  /* overflow: scroll; */
+}
+
+table tr {
+border-bottom: 0.3px solid white;
+height: 50px;
+}
+
+thead{
+  display: block;
+  background-color: #111111;
+}
+thead th{
+height: 80px;
+}
+tbody{
+  display: block;
+  text-align: center;
+  overflow: scroll;
+  max-height: 400px;
+}
+th, td{
+  vertical-align: middle;
+  width: 150px;
+}
