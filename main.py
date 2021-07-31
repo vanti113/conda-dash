@@ -1,8 +1,9 @@
+from re import template
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
-from datas import countries_df
+from datas import countries_df, totals_df
 from builders import make_tables
 
 # stylesheets = ["https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css",
@@ -22,12 +23,32 @@ map_figures = px.scatter_geo(countries_df,
                              color_continuous_scale=px.colors.sequential.Oryel,
                              size="Confirmed",
                              template="plotly_dark",
-                             projection="natural earth",
+
                              width=800,
                              height=500,
 
                              )
-# map_figures.show()
+map_figures.update_layout(margin_l=10, margin_r=0, margin_t=60, margin_b=0)
+
+fig = px.bar(totals_df,
+             x="condition",
+             y="count",
+             title="Total Global Cases",
+             template="plotly_dark",
+             labels={"condition": "Condition",
+                     "count": "Count", "color": "Condition"},
+             hover_data={"count": ":,"},
+             color=["Confirmed", "Deaths", "Recovered"])
+
+
+# fig.update_layout(
+#     xaxis={
+#         "title": "Condition"
+#     },
+#     yaxis={
+#         "title": "Count"
+#     }
+# )
 
 app.layout = html.Div(
     children=[
@@ -57,6 +78,12 @@ app.layout = html.Div(
 
                     ],
                     className="table-div"
+                ),
+                html.Div(
+                    [dcc.Graph(
+                        id="figure", figure=fig
+                    )],
+                    className="figure-div"
                 )
             ],
             className="dash-div"
