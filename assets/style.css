@@ -16,8 +16,15 @@ html, body{
 }
 .dash-div{
   display: grid;
-  grid-template-columns: 65% 35%;
+  grid-template-columns: repeat(20,1fr);
+  padding: 0px 20px;
 }
-.table-div, .graph-div{
-  border: 0.01px solid white;
+
+.graph-div{grid-column-start: 1; grid-column-end:14}
+.table-div{grid-column-start: 14; grid-column-end: 21;}
+.figure-div{grid-column-start:1; grid-column-end:21;}
+
+#output{
+  color:white;
+  font-size: 25px;
 }

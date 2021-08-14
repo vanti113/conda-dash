@@ -1,45 +1,37 @@
-html, body{
+*{
   box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
 }
-section{
-  width: 100%;
-  height: 100%;
 
+html,body{
+  width :100%;
+  height: 1fr;
 }
-main{
-  width: 100%;
-  height: 100%;
+
+.G-grid{
   display: grid;
-  justify-content: center;
-  grid-template-columns: 45% 45%;
+  width: 1000px;
+  height: 800px;
+  background-color: darkgrey;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1fr 1fr;
 }
-.first-box, .second-box{
-  height: 100%;
+.grid-a{
+  grid-column-start: 1;
+  grid-column-end: 6;
+  background-color: darkseagreen;
 }
-.first-box{
-  border: 0.5px solid black;
-
+.grid-b{
+  grid-column-start:6;
+  grid-column-end: 11;
+  background-color: darkgoldenrod;
 }
-.second-box{
-  border: 0.5px solid black;
+.grid-c{
+  grid-column-start:1;
+  grid-column-end:7;
+  background-color:darkcyan ;
 }
-table thead{
-
-}
-table thead tr{
-position: fixed;
-height: 50px;
-}
-table tbody{
-  position: relative;
-  top : 50px;
-}
-table tr{
-  display: block;
-  border-bottom: 0.5px solid black;
-}
-table th, table td{
-  width: 300px;
+.grid-d{
+  grid-column-start: 7;
+  grid-column-end: 11;
+  background-color: darkslateblue;
 }

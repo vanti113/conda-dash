@@ -5,6 +5,7 @@ import dash_html_components as html
 import plotly.express as px
 from datas import countries_df, totals_df
 from builders import make_tables
+from dash.dependencies import Input, Output
 
 # stylesheets = ["https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css",
 #                'https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap']
@@ -24,7 +25,7 @@ map_figures = px.scatter_geo(countries_df,
                              size="Confirmed",
                              template="plotly_dark",
 
-                             width=800,
+
                              height=500,
 
                              )
@@ -84,7 +85,17 @@ app.layout = html.Div(
                         id="figure", figure=fig
                     )],
                     className="figure-div"
+                ),
+
+                html.Div(
+                    [
+                        dcc.Input(placeholder="Write your name", id="input"),
+                        html.H2(children="Hello Anonymous", id="output"
+                                )
+
+                    ], style={"Color": "white"}
                 )
+
             ],
             className="dash-div"
         ),
@@ -92,6 +103,17 @@ app.layout = html.Div(
     ],
     className="main"
 )
+
+
+@app.callback(
+    Output("output", "children"),
+    Input("input", "value")
+)
+def handle_update(value):
+    if value is None:
+        return "Hello anonymous"
+    else:
+        return value
 
 
 if __name__ == '__main__':
